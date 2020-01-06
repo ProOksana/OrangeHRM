@@ -16,14 +16,17 @@ class login(unittest.TestCase):
     def test_login(self):
         success = True
         wd = self.wd
-        wd.get("file:///C:/Users/proko/Documents/GitHub/Zadanie_Piwik/index2%20(2).html")
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys("Oksana")
-        wd.find_element_by_name("lastname").click()
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys("Prokopek")
-        wd.find_element_by_css_selector("input[type=\"submit\"]").click()
+        wd.get("https://opensource-demo.orangehrmlive.com/index.php/auth/login")
+        wd.find_element_by_name("txtUsername").click()
+        wd.find_element_by_name("txtUsername").clear()
+        wd.find_element_by_name("txtUsername").send_keys("Admin")
+        wd.find_element_by_name("txtPassword").click()
+        wd.find_element_by_name("txtPassword").clear()
+        wd.find_element_by_name("txtPassword").send_keys("admin123")
+        wd.find_element_by_id("btnLogin").click()
+        wd.implicitly_wait(20)
+        wd.find_element_by_id("welcome").click()
+        wd.find_element_by_link_text("Logout").click()
         self.assertTrue(success)
 
 
